@@ -15,52 +15,10 @@ function print_json($arr, $die=false, $code=200){
     if($die) die;
 }
 
-
-/**
- * Função responsável por criptografar
- * e descriptografar a valores
- */
-function Cryptografa($Src, $Action='D'){
-	if ($Src == '') return;
-	$Key    = 'YUQL23KL23DF90WI5E1JAS467NMCXXL6JAOAUWWMCL0AOMM4A4VZYW9KHJUI2347EJHJKDF3424SKL K3LAKDJSL9RTIKJ';
-	$Dest   = ''; $KeyLen = strlen($Key); $KeyArr = str_split($Key); $KeyPos = -1; $SrcPos = 0;
-	$SrcAsc = 0; $SrcPos = 2; $Range  = 255;
-	
-	if(strtoupper($Action) == 'D'):
-		$OffSet = hexdec(substr($Src,0,2));
-		while($SrcPos < strlen($Src)):
-			$SrcAsc = hexdec(substr($Src,$SrcPos,2));
-			if ($KeyPos < $KeyLen) $KeyPos = $KeyPos + 1; else $KeyPos = 0; 
-			$TmpSrcAsc = $SrcAsc ^ ord($KeyArr[$KeyPos]);
-			if ($TmpSrcAsc <= $OffSet) $TmpSrcAsc = 255 + $TmpSrcAsc - $OffSet;
-			else $TmpSrcAsc = $TmpSrcAsc - $OffSet;
-			$Dest .= chr($TmpSrcAsc);
-			$OffSet = $SrcAsc;
-			$SrcPos = $SrcPos + 2; 
-		endwhile; $Result = $Dest;
-	elseif(strtoupper($Action) == 'C' || strtoupper($Action) == 'E'):
-		$OffSet = rand(0, $Range); $SrcArr = str_split($Src);
-		$Dest = FormatToHexa($OffSet);
-		for($SrcPos=0;$SrcPos<strlen($Src);$SrcPos++){
-			$SrcAsc = fmod((ord($SrcArr[$SrcPos]) + $OffSet), 255);
-			if($KeyPos < $KeyLen) $KeyPos = $KeyPos + 1; else $KeyPos = 0;
-			$SrcAsc = $SrcAsc ^ ord($KeyArr[$KeyPos]);
-			$Dest  .= FormatToHexa($SrcAsc); $OffSet = $SrcAsc;
-		} $Result = strtoupper($Dest);
-	endif;
-	
-	return $Result;
-}
-
-function FormatToHexa($val){
-	$rt = dechex($val); $rt = strlen($rt) < 2 ? '0'.$rt : $rt; return $rt;
-}
-
-
 /**
  * CRIANDO JSON WEB TOKEN
  */
-$key = 'Unic@,1nform4t1c4@162534';
+$key = md5('API-KEY-TOKEN123456789@');
 
 function jwt($dataload) {
     global $key;
