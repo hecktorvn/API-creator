@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>API - Exemplos</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container pt-5">
+        <h3 class="p-3 border rounded text-center">Opa, nenhum parametro foi informado!</h3>
+        <h5 class="p-4 border-bottom mb-3">Parametros</h5>
+        <div class="form pl-5 mb-5">
+            <div class="col-12 mb-3">
+                <h5>filial <small>- Filtra a filial do CTe</small></h5>
+            </div>
+
+            <div class="col-12 mb-3">
+                <h5>coleta <small>- Filtra a cidade de coleta</small></h5>
+            </div>
+
+            <div class="col-12 mb-3">
+                <h5>entrega <small>- Filtra a cidade de entrega</small></h5>
+            </div>
+
+            <div class="col-12 mb-3">
+                <h5>cliente <small>- Aceita o nome ou o CPF/CNPJ do cliente.</small></h5>
+                <ul>
+                    <li class="text-danger">O CNPJ/CPF deve ser informado apenas os números!</li>
+                    <li class="text-danger">Obrigatório informar o <b>tipo_cliente</b>!</li>
+                </ul>
+            </div>
+
+            <div class="col-12">
+                <h5>periodo <small>- Determina qual o filtro de data deve ser aplicado caso "dtini" e "dtfim" sejam preenchidos.</small></h5>
+                <ul>
+                    <li>entrega</li>
+                    <li>previsao</li>
+                    <li>emissao <small><b>- Default</b></small></li>
+                </ul>
+            </div>
+
+            <div class="col-12">
+                <h5>dtini <small>- Especifica a data inicial dos CTe's que deseja obter.</small></h5>
+                <ul>
+                    <li><?php View::e( date('d/m/y') );?> <small><b>- Default</b></small></li>
+                    <lt>Formato : dd/mm/yy</lt>
+                </ul>
+            </div>
+
+            <div class="col-12">
+                <h5>dtfim <small>- Especifica a data final dos CTe's que deseja obter.</small></h5>
+                <ul>
+                    <li><?php View::e( date('d/m/y') );?> <small><b>- Default</b></small></li>
+                    <lt>Formato : dd/mm/yy</lt>
+                </ul>
+            </div>
+
+            <div class="col-12">
+                <h5>tipo_cliente <small class="text-danger">- É obrigatório informar caso seja preenchido o campo "cliente".</small></h5>
+                <ul>
+                    <li>remetente</li>
+                    <li>destinatario</li>
+                    <li>consignatario</li>
+                </ul>
+            </div>
+            
+            <div class="col-12">
+                <h5>situacao <small>- Situação do CTe e do Manifesto.</small></h5>
+                <ul>
+                    <li>manifesto</li>
+                    <li>romaneio</li>
+                    <li>entregue</li>
+                    <li>origem</li>
+                    <li>destino</li>
+                    <li>retida</li>
+                    <li>aberto <small><b>- Default</b></small></li>
+                    <li>cancelado</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <h5 class="p-4 border-bottom mb-3 border-top">Exemplos</h5>
+        <div class="form">
+            <div class="col-12">
+                <?php
+                    $dt_ini = date('d/m/y', strtotime('-10 days'));
+                    $dt_fim = date('d/m/y');
+                    $link = 'http://unicanet.com.br/API/extrato?dtini=' . $dt_ini . '&dt_fim=' . $dt_fim;
+                ?>
+                <a href="<?php View::e( $link }}">{{ $link );?></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
