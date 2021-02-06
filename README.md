@@ -32,9 +32,9 @@ class Banco{
 
  
 ```php
-	Request::GET('/usuario', 'Usuario@index');
-	Request::POST('/usuario', 'Usuario@store');
-	Request::POST('/usuario/{id}', 'Usuario@update');
+Request::GET('/usuario', 'Usuario@index');
+Request::POST('/usuario', 'Usuario@store');
+Request::POST('/usuario/{id}', 'Usuario@update');
 	...
 ```
 
