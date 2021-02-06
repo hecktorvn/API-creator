@@ -1,4 +1,4 @@
-## Utilização do FrameWork
+## Utilização do Framework
 Para que uma rota funcione é necessário informalá no arquivo Route.php
 Atualmente é apenas aceito os metodos (**GET** e **POST**).
 
@@ -55,8 +55,8 @@ Para que a função retorne um JSON é preciso utilizar a função **print_json*
 
 ```php
 public function index($req) {
-		$rt = ['error'=>true, 'message'=>'Mensagem de erro'];
-		print_json($rt);
+	$rt = ['error'=>true, 'message'=>'Mensagem de erro'];
+	print_json($rt);
 }
 ```
 
